@@ -13,7 +13,18 @@ return new class extends Migration
     {
         Schema::create('subscribe_transactions', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('booking_trx_id');
+            $table->string('name');
+            $table->string('phone');
+            $table->string('email');
+            $table->string('proof');
+            $table->unsignedBigInteger('total_amount');
+            $table->unsignedBigInteger('duration');
+            $table->boolean('is_paid');
+            $table->date('started_at');
+            $table->date('ended_at');
+            $table->foreignId('subsribe_package_id')->constrained()->cascadeOnDelete();
+            $table->softDeletes();
         });
     }
 
