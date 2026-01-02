@@ -23,7 +23,7 @@ return new class extends Migration
             $table->boolean('is_paid');
             $table->date('started_at');
             $table->date('ended_at');
-            $table->foreignId('subsribe_package_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('subscribe_package_id')->constrained()->cascadeOnDelete();
             $table->softDeletes();
         });
     }
