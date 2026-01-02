@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('subscribe_packages', function (Blueprint $table) {
             $table->id();
+            $table->string('icon');
+            $table->text('name');
+            $table->unsignedBigInteger('price');
+            $table->unsignedBigInteger('duration');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
