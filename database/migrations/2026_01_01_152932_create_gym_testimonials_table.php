@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('gym_testimonials', function (Blueprint $table) {
             $table->id();
+            $table->string('occupation');
+            $table->string('name');
+            $table->string('photo');
+            $table->text('message');
+            $table->foreignId('gym_id')->constrained()->cascadeOnDelete();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
