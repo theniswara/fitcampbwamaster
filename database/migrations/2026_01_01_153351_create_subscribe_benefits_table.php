@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('subscribe_benefits', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->foreignId('subscribe_package_id')->constrained()->cascadeOnDelete();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
