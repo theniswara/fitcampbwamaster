@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('facilities', function (Blueprint $table) {
             $table->id();
+            $table->text('about');
+            $table->string('name');
+            $table->string('thumbnail');
+            $table->boolean('is_open');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
