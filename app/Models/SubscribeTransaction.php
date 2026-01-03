@@ -24,4 +24,9 @@ class SubscribeTransaction extends Model
         'ended_at',
         'subcribe_package_id',
     ];
+
+    protected $cast = [
+        'started_at' => 'date',
+        'ended_at' => 'date',
+    ];
 }
