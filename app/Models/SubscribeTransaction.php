@@ -35,14 +35,4 @@ class SubscribeTransaction extends Model
     {
         return $this->belongsTo(SubscribePackage::class, 'subscribe_package_id');
     }
-
-    public static function generateUniqueTrxId()
-    {
-        $prefix = 'FITBWA';
-        do {
-            $randomstring = $prefix . mt_rand(1000, 9999);
-        } while (self::where('booking_trx_id', $randomstring)->exist());
-
-        return $randomstring;
-    }
 }
