@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Gym extends Model
@@ -22,4 +24,24 @@ class Gym extends Model
         'closed_time_at',
         'city_id',
     ];
+
+    public function city(): BelongsTo
+    {
+        return $this->belongsTo(City::class, 'city_id');
+    }
+
+    public function gymTestimonials(): HasMany
+    {
+        return $this->hasMany(GymTestimonial::class);
+    }
+
+    public function gymPhotos(): HasMany
+    {
+        return $this->hasMany(GymPhoto::class);
+    }
+
+    public function gymFacilities(): HasMany
+    {
+        return $this->hasMany(GymFacility::class, 'gym_id');
+    }
 }
