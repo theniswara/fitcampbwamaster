@@ -2,6 +2,9 @@
 
 namespace App\Filament\Resources\SubscribePackages\Schemas;
 
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
 class SubscribePackageForm
@@ -11,6 +14,30 @@ class SubscribePackageForm
         return $schema
             ->components([
                 //
+                TextInput::make('name')
+                    ->required()
+                    ->maxLength(255),
+
+                FileUpload::make('icon')
+                    ->required()
+                    ->image(),
+
+                TextInput::make('price')
+                    ->required()
+                    ->numeric()
+                    ->prefix('IDR'),
+
+                TextInput::make('duration')
+                    ->required()
+                    ->numeric()
+                    ->prefix('Days'),
+
+                Repeater::make('subscribeBenefits')
+                    ->relationship('subscribeBenefits')
+                    ->schema([
+                        TextInput::make('name')
+                            ->required(),
+                    ]),
             ]);
     }
 }
