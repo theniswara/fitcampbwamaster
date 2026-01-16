@@ -57,9 +57,10 @@ class GymForm
                         ->schema([
                             Select::make('facility_id')
                                 ->label('Gym Facility')
-                                ->options(Facility::all()->pluck('name', 'id'))
+                                ->relationship('facility', 'name')
+                                ->preload()
                                 ->searchable()
-                            ->required(),
+                                ->required(),
                         ]),
 
                     Select::make('is_popular')
