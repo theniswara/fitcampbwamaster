@@ -23,7 +23,7 @@ class SubscribeTransaction extends Model
         'is_paid',
         'started_at',
         'ended_at',
-        'subcribe_package_id',
+        'subscribe_package_id',
     ];
 
     protected $cast = [
@@ -31,7 +31,7 @@ class SubscribeTransaction extends Model
         'ended_at' => 'date',
     ];
 
-    protected function subscribePackage(): BelongsTo
+    public function subscribePackage(): BelongsTo
     {
         return $this->belongsTo(SubscribePackage::class, 'subscribe_package_id');
     }
